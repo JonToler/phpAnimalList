@@ -27,8 +27,13 @@ _Spec 4: Individual animals can be deleted from the database._
 * _Output: Current animal deleted from database_
 
 _Spec 5: Animals can be sorted based on how long they've been in the shelter._
-* _Input: Sort animals_ 
+* _Input: Sort animals_
 * _Output: List of all animals in database sorted in ascending order of age_
+
+_Spec 6: New breeds can be saved to the database._
+* _Input: New Breed_
+* _Output: New breed saved to the database_
+
 
 ## Setup/Installation Requirements
 

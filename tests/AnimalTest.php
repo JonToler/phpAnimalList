@@ -44,7 +44,7 @@
         {
             //Arrange
             $test_animal = new Animal(2, 'Hank', 'Male', 7, 32, 3, 'Black', 3, 2);
-            $test_animal2 = new Animal(2, 'Bill', 'Male', 7, 32, 3, 'Black', 3, 2);
+            $test_animal2 = new Animal(3, 'Bill', 'Male', 8, 23, 4, 'Black', 2, 4);
             $test_animal->save();
             $test_animal2->save();
             //Act
@@ -52,5 +52,33 @@
             //Assert
             $this->assertEquals([], Animal::getAll());
         }
+
+        function test_deleteItem()
+        {
+            //Arrange
+            $test_animal = new Animal(2, 'Hank', 'Male', 7, 32, 3, 'Black', 3, 2);
+            $test_animal2 = new Animal(3, 'Bill', 'Male', 8, 23, 4, 'Black', 2, 4);
+            $test_animal->save();
+            $test_animal2->save();
+            //Act
+            $test_animal2->deleteItem();
+            //Assert
+            $this->assertEquals([$test_animal], Animal::getAll());
+        }
+
+        function test_sort()
+        {
+            $test_animal = new Animal(2, 'Hank', 'Male', 7, 32, 3, 'Black', 3, 2);
+            $test_animal2 = new Animal(3, 'Bill', 'Male', 8, 23, 4, 'Black', 2, 4);
+            $test_animal3 = new Animal(4, 'Chloe', 'Female', 7, 14, 3, 'Red', 6, 3);
+            $test_animal->save();
+            $test_animal2->save();
+            $test_animal3->save();
+            //Act
+            $result = Animal::sort();
+            //Assert
+            $this->assertEquals([$test_animal2, $test_animal, $test_animal3], $result);
+        }
+
     }
  ?>

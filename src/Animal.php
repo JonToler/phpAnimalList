@@ -41,14 +41,29 @@
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
-        function sort()
-        {
-
-        }
-
         function deleteItem()
         {
+            $GLOBALS['DB']->exec("DELETE FROM animals WHERE id = {$this->getId()};");
+        }
 
+        static function sort()
+        {
+            $animals = Animal::getAll();
+            $sorted_animals = array();
+
+            while (sizeof($animals) > 0) {
+                $low = 1000;
+                $low_index = null;
+                for ($i = 0; $i < sizeof($animals); $i++) {
+                    if ($animals[$i]->getMonthsInShelter() < $low) {
+                        $low = $animals[$i]->getMonthsInShelter();
+                        $low_index = $i;
+                    }
+                }
+                array_push($sorted_animals, $animals[$low_index]);
+                array_splice($animals, $low_index, 1);
+            }
+            return $sorted_animals;
         }
 
         static function getAll()
