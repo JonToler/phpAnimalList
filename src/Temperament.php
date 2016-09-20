@@ -55,6 +55,19 @@
             $GLOBALS['DB']->exec("DELETE FROM temperaments");
         }
 
+        static function findId($description)
+        {
+            $temperaments = Temperament::getAll();
+            foreach($temperaments as $temperament) {
+                if ($temperament->getDescription() == $description) {
+                    return $temperament->getId();
+                }
+            }
+            $new_temperament = new Temperament($description);
+            $new_temperament->save();
+            return $new_temperament->getId();
+        }
+
         function getId()
         {
             return $this->id;

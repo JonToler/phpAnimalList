@@ -34,6 +34,14 @@ _Spec 6: New breeds can be saved to the database._
 * _Input: New Breed_
 * _Output: New breed saved to the database_
 
+_Spec 7: New temperaments can be saved to the database._
+* _Input: New Temperament_
+* _Output: New temperament saved to the database_
+
+_Spec 8: New species can be saved to the database._
+* _Input: New Species_
+* _Output: New species saved to the database_
+
 
 ## Setup/Installation Requirements
 

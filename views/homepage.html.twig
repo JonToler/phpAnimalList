@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <title>Animal Shelter</title>
+    </head>
+    <body>
+        <div class='container'>
+            <h1>Animal Shelter</h1>
+            <div class='row'>
+                <div class='col-sm-6'>
+                    <h4>Enter a new animal</h4>
+                    <form method='post' action='/post_animal'>
+                        <input type='text' class='form-control' name='species' placeholder='species'>
+                        <input type='text' class='form-control' name='name' placeholder='name'>
+                        <input type='text' class='form-control' name='gender' placeholder='gender'>
+                        <input type='text' class='form-control' name='age' placeholder='age'>
+                        <input type='text' class='form-control' name='weight' placeholder='weight'>
+                        <input type='text' class='form-control' name='breed' placeholder='breed'>
+                        <input type='text' class='form-control' name='color' placeholder='color'>
+                        <input type='text' class='form-control' name='months in shelter' placeholder='months_in_shelter'>
+                        <input type='text' class='form-control' name='temperament' placeholder='temperament'>
+                        <button type='submit' class='btn'>Submit New Animal</button>
+                    </form>
+                </div>
+                <div class='col-sm-3'>
+                    <h4>Animals available for adoption:</h4>
+                    <p>Filter by species:</p>
+                    <ul>
+                        {% for type in species %}
+                            <li><a href='/filter_species/{{ type.getDescription }}'>{{ type.getDescription }}</a>
+                        {% endfor %}
+                    </ul>
+                    <p>Filter by temperament:</p>
+                    <ul>
+                        {% for temperament in temperaments %}
+                            <li><a href='/filter_temperament/{{ temperament.getDescription }}'>{{ temperament.getDescription }}</a>
+                        {% endfor %}
+                    </ul>
+                    <p>Filter by breed:</p>
+                    <ul>
+                        {% for breed in breeds %}
+                            <li><a href='/filter_breed/{{ breed.getDescription }}'>{{ breed.getDescription }}</a>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class='col-sm-3'>
+                    <ul>
+                        {% for animal in animals %}
+                            <li><h5>{{ animal.getName }}</h5>
+                                <p>Species: {{ animal.getSpeciesId }}<br>
+                                Gender: {{ animal.getGender }}<br>
+                                Age: {{ animal.getAge }}<br>
+                                Weight: {{ animal.getWeight }}<br>
+                                Breed: {{ animal.getBreedId }}<br>
+                                Color: {{ animal.getColor }}<br>
+                                Months in Shelter: {{ animal.getMonthsInShelter }}<br>
+                                Temperament: {{ animal.getTemperamentId }}</p>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

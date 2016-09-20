@@ -50,6 +50,19 @@
             return $all_breeds;
         }
 
+        static function findId($description)
+        {
+            $breeds = Breed::getAll();
+            foreach($breeds as $breed) {
+                if ($breed->getDescription == $description) {
+                    return $breed->getId();
+                }
+            }
+            $new_breed = new Breed($description);
+            $new_breed->save();
+            return $new_breed->getId();
+        }
+
         static function deleteAll()
         {
             $GLOBALS['DB']->exec("DELETE FROM breeds");

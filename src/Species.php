@@ -55,6 +55,29 @@
             $GLOBALS['DB']->exec("DELETE FROM species");
         }
 
+        static function findId($description)
+        {
+            $species = Species::getAll();
+            foreach($species as $type) {
+                if ($type->getDescription() == $description) {
+                    return $type->getId();
+                }
+            }
+            $new_species = new Species($description);
+            $new_species->save();
+            return $new_species->getId();
+        }
+
+        static function findById($id)
+        {
+            $species = Species::getAll();
+            foreach ($species as $type) {
+                if ($type->getId == $id) {
+                    return $this->getDescription;
+                }
+            }
+        }
+
         function getId()
         {
             return $this->id;
