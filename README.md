@@ -10,10 +10,25 @@ _User can browse animals that are available for adoption by breed, gender, age, 
 
 ## Specifications
 
-_Spec 1: Save._
-* _Input: 48_
-* _Output: Tomatoes, Chocolate_
+_Spec 1: New animals are saved to the database._
+* _Input: New Animal_
+* _Output: New animal assigned database ID #_
 
+_Spec 2: A list of all animals can be returned._
+* _Input: Get all animals_
+* _Output: List of all animals_
+
+_Spec 3: All animals can be deleted from the database._
+* _Input: Delete all_
+* _Output: Database empty_
+
+_Spec 4: Individual animals can be deleted from the database._
+* _Input: Delete current animal_
+* _Output: Current animal deleted from database_
+
+_Spec 5: Animals can be sorted based on how long they've been in the shelter._
+* _Input: Sort animals_ 
+* _Output: List of all animals in database sorted in ascending order of age_
 
 ## Setup/Installation Requirements
 
